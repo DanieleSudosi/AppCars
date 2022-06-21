@@ -1,0 +1,17 @@
+<div class="container-lg text-center">
+  <div class="row">
+    <div class="col-auto">
+      <h2 class="text-success m-3">Lista delle vetture</h2>
+      <div *ngFor="let vettura of vetture" class="card d-inline-flex belbox m-2" style="width: 25rem">
+        <img class="card-img-top" src="..." alt="Card image cap" />
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ vettura.marca }} - {{ vettura.modello }}
+          </h5>
+          <p class="card-text">{{ vettura.descrizione }}</p>
+          <a routerLink="/contcli" class="btn btn-success belbox">Vai al contratto</a>        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

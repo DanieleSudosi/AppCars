@@ -1,0 +1,20 @@
+<div class="container-lg text-center">
+    <div class="row">
+      <div class="col-auto">
+        <h2 class="text-success m-3">Lista dei contratti</h2>
+        <div *ngFor="let contratto of contratti" class="card d-lg-inline-flex m-2" style="width: 25rem">
+          <div class="card-body belbox">
+            <h5 class="card-title">Contratto {{contratto.titoloContratto}}</h5>
+            <p class="card-text"> {{contratto.descrizioneContratto}}</p>
+            <p class="card-text text-info">costo: {{contratto.costoMensile}} €</p>
+            <p class="card-text text-success">Durata minima: {{contratto.durataMin}}</p>
+            <p class="card-text text-danger">Durata massima: {{contratto.durataMax}}</p>
+            <button class="btn btn-success belbox" routerLink="/nolcli">Noleggia</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    

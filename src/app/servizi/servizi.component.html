@@ -1,0 +1,24 @@
+<div class="container-lg text-center">
+  <div class="row">
+    <div class="col-auto">
+      <h2 class="text-info m-3">Lista dei servizi</h2>
+      <div *ngFor="let servizio of servizi" class="card d-lg-inline-flex" style="width: 25rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ servizio.nomeServizio }}</h5>
+          <p class="card-text">{{ servizio.descrizioneServizio }}</p>
+          <a routerLink="/working" class="btn btn-primary">modifica </a>
+          <a routerLink="/working" class="btn btn-danger">elimina </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-info">Aggiungi subito il tuo servizio</h2>
+      <button type="button" class="btn border border-dark  rounded-3 fs-5 py-3 text-info m-3 ">Crea nuovo servizio</button>
+    </div>
+  </div>
+</div>
