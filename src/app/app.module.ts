@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiziComponent } from './servizi/servizi.component';
 import { ContrattoComponent } from './contratto/contratto.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     WorkingProgessComponent,
     ServiziComponent,
     ContrattoComponent,
-    SignUpComponent
+    SignUpComponent,
+    FormServiziComponent
   ],
   imports: [
     BrowserModule,

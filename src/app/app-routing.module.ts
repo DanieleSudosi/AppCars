@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContrattoClienteComponent } from './contratto-cliente/contratto-cliente.component';
 import { ContrattoComponent } from './contratto/contratto.component';
@@ -11,6 +11,8 @@ import { ServiziComponent } from './servizi/servizi.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VetturaComponent } from './vettura/vettura.component';
 import { WorkingProgessComponent } from './working-progess/working-progess.component';
+import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
+
 
 const routes: Routes = [
   //PATH IN COMUNE
@@ -26,7 +28,8 @@ const routes: Routes = [
   {path: 'contnol',component: ContrattoComponent,children:[
     ]},
   {path: 'vetture', component: VetturaComponent},
-  {path: 'servizi', component: ServiziComponent},
+  {path: 'servizi', component: ServiziComponent,children:[
+    {path: 'formservizi', component: FormServiziComponent}]},
   
   //PATH CLIENTE
   

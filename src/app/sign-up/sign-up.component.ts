@@ -42,7 +42,4 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // test(){
-  //   console.log(this.tipologia);
-  // }
 }

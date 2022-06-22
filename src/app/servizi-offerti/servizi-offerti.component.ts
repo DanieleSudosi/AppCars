@@ -12,7 +12,7 @@ export class ServiziOffertiComponent implements OnInit {
   servizi: any = [];
 
   ngOnInit(): void {
-    this.service.get().subscribe((response) => {
+    this.service.getServizi().subscribe((response) => {
       this.servizi = response;
     });
   }
