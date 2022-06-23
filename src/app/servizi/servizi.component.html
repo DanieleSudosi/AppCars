@@ -6,16 +6,16 @@
         <div class="card-body">
           <h5 class="card-title">{{ servizio.nomeServizio }}</h5>
           <p class="card-text">{{ servizio.descrizioneServizio }}</p>
-          <a  class="btn btn-primary">modifica</a>
+          <a  class="btn btn-primary" (click)="modificaServizio(servizio)">modifica</a>
           <a class="btn btn-danger" (click)="deleteServizio(servizio.id)">elimina</a>
         </div>
       </div>
     </div>
-<!-- (click)="showUpdate(servizio.id)" -->
+
     <hr />
     <div class="col-12">
       <h2 class="text-info">Aggiungi subito il tuo servizio</h2>
-      <button type="button" class="btn border border-dark rounded-3 fs-5 py-3 text-info m-3">
+      <button type="button" class="btn border border-dark rounded-3 fs-5 py-3 text-info m-3" (click)='switchForm()'>
         Crea nuovo servizio
       </button>
     </div>
@@ -23,6 +23,8 @@
 </div>
 
 <div *ngIf="update">
+  <hr>
+  <h3 class="text-info text-center">Modifica il tuo servizio</h3>
   <form [formGroup]="form" class="text-center">
     <div class="form-group">
       <label for="nomeServizio">Nome servizio</label>
@@ -30,11 +32,10 @@
         formControlName="nomeServizio" />
     </div>
     <div class="form-group">
-      <label for="descServizio">Descrizione servizio</label>
-      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="descServizio" />
+      <label for="descrizioneServizio">Descrizione servizio</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="descrizioneServizio" />
     </div>
     <input type="submit" class="btn btn-success" value="Update" (click)="updateServizio()" />
   </form>
 </div>
-<div> Ciao giova</div>
-<button class="btn btn-primary">Clicca la testa di Cuis</button>
+<app-form-servizi *ngIf="showForm"></app-form-servizi>

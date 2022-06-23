@@ -28,6 +28,6 @@ export class ServizioService {
   }
 
   deleteServizio(id: Number) {
-    return this.http.request('delete', this.url, {body: id});
+    return this.http.request('delete', `${this.url}/${id}`);
   }
 }

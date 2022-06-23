@@ -16,6 +16,7 @@ export class ServiziComponent implements OnInit {
 
   validatore = Validators.required;
   form: FormGroup = this.formBuilder.group({
+    id: [''],
     nomeServizio: ['', this.validatore],
     descrizioneServizio: ['', this.validatore],
   });
@@ -24,8 +25,17 @@ export class ServiziComponent implements OnInit {
   update = false;
   index: Number;
   servizi: any = [];
+  showForm = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.getServizi()
+  }
+
+  switchForm(){
+    this.showForm=true;
+    this.update=false;
+  }
 
   getServizi() {
     this.service.getServizi().subscribe((response) => {
@@ -36,26 +46,22 @@ export class ServiziComponent implements OnInit {
   deleteServizio(id: Number) {
     this.service.deleteServizio(id).subscribe(() => {
       this.getServizi();
+      alert('servizio eliminato con successo')
     });
   }
 
-  // showUpdate(id: number, index: number) {
-  //   this.id = id;
-  //   this.index = index;
-  //   this.form.get('nomeServizio')!.setValue(this.servizi[index].nomeServizio);
-  //   this.form.get('descrizioneServizio')!.setValue(this.servizi[index].descrizioneServizio);
-  //   this.update = true;
-  // }
+  modificaServizio(s: Servizio) {
+    this.showForm = false;
+    this.form.patchValue(s);
+    this.update = true;
+  }
 
   updateServizio() {
-    let newServizio: Servizio = {
-      id: this.id,
-      nomeServizio: this.form.get('nomeServizio')!.value,
-      descrizioneServizio: this.form.get('descrizioneServizio')!.value,
-    };
-    this.service.updateServizio(newServizio).subscribe(() => {
+    this.service.updateServizio(this.form.value).subscribe(() => {
       this.getServizi();
+      alert('servizio modificato')
     });
     this.update = false;
   }
+
 }
