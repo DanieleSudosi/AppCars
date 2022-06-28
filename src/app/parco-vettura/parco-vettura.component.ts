@@ -15,9 +15,8 @@ export class ParcoVetturaComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.service.get().subscribe(response =>{
+    this.service.getVetture().subscribe(response =>{
       this.vetture=response;
-      
     });
   }
 

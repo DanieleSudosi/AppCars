@@ -12,6 +12,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { VetturaComponent } from './vettura/vettura.component';
 import { WorkingProgessComponent } from './working-progess/working-progess.component';
 import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
+import { FormVettureComponent } from './vettura/form-vetture/form-vetture.component';
+import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
 
 
 const routes: Routes = [
@@ -26,8 +28,11 @@ const routes: Routes = [
   
   {path: 'working', component: WorkingProgessComponent},
   {path: 'contnol',component: ContrattoComponent,children:[
-    ]},
-  {path: 'vetture', component: VetturaComponent},
+    {path: 'formContratto', component: FormContrattoComponent}]},
+    
+  {path: 'vetture', component: VetturaComponent,children:[
+    {path: 'formVetture', component: FormVettureComponent}]},
+
   {path: 'servizi', component: ServiziComponent,children:[
     {path: 'formservizi', component: FormServiziComponent}]},
   

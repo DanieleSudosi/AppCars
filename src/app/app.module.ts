@@ -20,6 +20,8 @@ import { ServiziComponent } from './servizi/servizi.component';
 import { ContrattoComponent } from './contratto/contratto.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
+import { FormVettureComponent } from './vettura/form-vetture/form-vetture.component';
+import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { FormServiziComponent } from './servizi/form-servizi/form-servizi.compon
     ServiziComponent,
     ContrattoComponent,
     SignUpComponent,
-    FormServiziComponent
+    FormServiziComponent,
+    FormVettureComponent,
+    FormContrattoComponent
   ],
   imports: [
     BrowserModule,

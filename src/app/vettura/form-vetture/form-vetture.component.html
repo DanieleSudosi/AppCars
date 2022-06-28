@@ -1,0 +1,28 @@
+<form [formGroup]="form" class="text-center">
+  <div class="form-group">
+    <label for="marca">Marca</label>
+    <input type="text" class="form-control m-auto w-auto" placeholder="Marca"
+      formControlName="marca" />
+  </div>
+  <div class="form-group">
+    <label for="modello">Modello</label>
+    <input type="text" class="form-control m-auto w-auto" placeholder="modello" formControlName="modello" />
+  </div>
+  <div class="form-group">
+    <label for="alimentazione">Alimentazione</label>
+    <input type="text" class="form-control m-auto w-auto" placeholder="alimentazione" formControlName="alimentazione" />
+  </div>
+  <div class="form-group">
+    <label for="descrizione">descrizione</label>
+    <input type="text" class="form-control m-auto w-auto" placeholder="descrizione" formControlName="descrizione" />
+  </div>
+  <div class="form-group">
+    <label for="quantita">quantità</label>
+    <input type="number" class="form-control m-auto w-auto" placeholder="quantita" formControlName="quantita" />
+  </div>
+  <!-- <div class="form-group">
+    <label for="Modello">immagine</label>
+    <input type="text" class="form-control m-auto w-auto" placeholder="img" formControlName="img" />
+  </div> -->
+  <input type="submit" class="btn btn-success" (click)="addVettura()" />
+</form>
