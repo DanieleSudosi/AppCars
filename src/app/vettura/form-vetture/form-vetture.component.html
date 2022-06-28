@@ -12,6 +12,17 @@
     <label for="alimentazione">Alimentazione</label>
     <input type="text" class="form-control m-auto w-auto" placeholder="alimentazione" formControlName="alimentazione" />
   </div>
+  <!-- <div class="form-group">
+    <label for="alimentazione">Alimentazione</label>
+    <select class="form-select" id="alimentazione" style="width: 300px " >
+      <option selected>Seleziona il tipo di alimentazione</option>
+        <option value="1">BENZINA</option>
+        <option value="2">GPL</option>
+        <option value="3">ELETTRICO</option> 
+        <option value="4">DISEL</option> 
+        <option value="5">HYBRID</option> 
+    </select>
+  </div> -->
   <div class="form-group">
     <label for="descrizione">descrizione</label>
     <input type="text" class="form-control m-auto w-auto" placeholder="descrizione" formControlName="descrizione" />
@@ -24,5 +35,7 @@
     <label for="Modello">immagine</label>
     <input type="text" class="form-control m-auto w-auto" placeholder="img" formControlName="img" />
   </div> -->
+  <br>
   <input type="submit" class="btn btn-success" (click)="addVettura()" />
 </form>
+<br>
