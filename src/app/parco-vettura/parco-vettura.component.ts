@@ -13,8 +13,6 @@ export class ParcoVetturaComponent implements OnInit {
   vetture: any = [];
 
   ngOnInit(): void {
-
-
     this.service.getVetture().subscribe(response =>{
       this.vetture=response;
     });

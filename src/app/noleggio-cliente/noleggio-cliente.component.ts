@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VetturaService } from '../vettura/vettura.service';
 
 @Component({
   selector: 'app-noleggio-cliente',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoleggioClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: VetturaService) { }
 
+  vetture: any = [];
+  
   ngOnInit(): void {
+    this.service.getVetture().subscribe(response =>{
+      this.vetture=response;
+    });
   }
 
 }
