@@ -31,6 +31,7 @@
 
 <div *ngIf="update">
   <hr>
+  <h3 class="text-info text-center">Modifica la formula di contratto</h3>
 <form [formGroup]="form" class="text-center">
   <div class="form-group">
     <label for="titoloContratto">Titolo contratto</label>
@@ -55,11 +56,11 @@
   </div>
   <div class="form-group">
       <label for="servizi">Aggiungi Servizi</label>
-      <select class="form-select" id="selezione">
+      <select class="form-select select select--multiple" id="servizi">
           <option *ngFor="let servizio of servizi" value="servizio">{{servizio.nomeServizio}}</option>
         </select>
   </div>
-  <input type="submit" class="btn btn-success" />
+  <input type="submit" class="btn btn-success" value="Modifica"/>
 </form>
 </div>
 <app-form-contratto *ngIf="showForm"></app-form-contratto>

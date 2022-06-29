@@ -19,8 +19,6 @@ export class ParcoVetturaComponent implements OnInit {
     alimentazione: ''
   }
 
- 
-
   ngOnInit(): void {
     this.getVetture();
   }
@@ -46,16 +44,14 @@ pulisci() {
 }
 
   listaVetture(tipoFiltro: any){
-  // this.service.getVetture().subscribe(response =>{
     this.vetture = this.filterVetture(this.vetture, tipoFiltro)
-  // });
+
 }
 
   
   filterVetture(vetture: any, tipoFiltro: TipoFiltro){
     return vetture.filter((v: any) => {
       return v[tipoFiltro].toLowerCase().includes(this.filters[tipoFiltro].toLowerCase());
-              // (v.modello.toLowerCase().includes(this.filters.keyword.toLowerCase()));
     })
   }
 

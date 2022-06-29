@@ -15,16 +15,12 @@
       <div class="col-sm-5 m-3">
         <label for="alimentazione">Alimentazione</label>
         <input type="search" class="form-control rounded belbox" placeholder="Ricerca alimentazione"
-          [(ngModel)]="filters.alimentazione" name="keyword" id="alimentazione" />
+        [(ngModel)]="filters.alimentazione" name="keyword" id="alimentazione" />
 
           <!-- <label for="alimentazione">Alimentazione</label>
-      <select class="form-select" id="selezione">
-          <option value="1"[(ngModel)]="filters.alimentazione">BENZINA</option>
-          <option value="2"[(ngModel)]="filters.alimentazione">GPL</option>
-          <option value="3"[(ngModel)]="filters.alimentazione">ELETTRICO</option> 
-          <option value="4"[(ngModel)]="filters.alimentazione">DISEL</option> 
-          <option value="5"[(ngModel)]="filters.alimentazione">HYBRID</option> 
-        </select> -->
+          <select class="form-select" id="selezione" [(ngModel)]="filters.alimentazione">
+            <option *ngFor="let vettura of vetture" value="servizio">{{vettura.alimentazione}}</option>
+          </select> -->
       </div>
      
       <div class="col-3">
@@ -45,6 +41,7 @@
         <h5 class="card-title">
           {{ vettura.marca }} - {{ vettura.modello }}
         </h5>
+        <p class="card-text"> <strong>alimentazione:</strong> {{ vettura.alimentazione }}</p>
         <p class="card-text">{{ vettura.descrizione }}</p>
         <a routerLink="/contcli" class="btn btn-success belbox">Vai al contratto</a>
       </div>

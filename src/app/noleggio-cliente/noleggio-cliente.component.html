@@ -1,30 +1,30 @@
 <div class="container lg">
   <div class="row">
   <h2 class="text-info">Noleggio Auto</h2>
-  <form>
+  <form >[formGroup]="form"
     <div class="form-group col-lg-8">
       <div class="row">
         <div class="col-6">
           <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" placeholder="Name" />
+          <input type="text" class="form-control" id="nome" placeholder="Name"  />formControlName="nome"
         </div>
         <div class="col-6">
           <label for="cognome">Cognome</label>
-      <input type="text" class="form-control" id="cognome" placeholder="Surname" />
+      <input type="text" class="form-control" id="cognome" placeholder="Surname"  />formControlName="cognome"
         </div>
       </div>
 
       <label for="selezione">Seleziona l'auto che desideri noleggiare</label>
       <select class="form-select" id="selezione">
 
-        <option *ngFor="let vettura of vetture" value="vettura">{{vettura.marca}} - {{vettura.modello}}</option>
+        <option *ngFor="let vettura of vetture" value="vettura"  >{{vettura.marca}} - {{vettura.modello}}</option>formControlName="idVettura"
 
       </select>
       
           <label for="nome">Data inizio noleggio</label>
-          <input type="date" class="form-control" id="durataInizio" placeholder="Data inizio Noleggio" />
+          <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio"  />formControlName="dataInizio"
           <label for="nome">Data reso noleggio</label>
-          <input type="date" class="form-control" id="durataReso" placeholder="Durata noleggio" />    
+          <input type="date" class="form-control" id="dataReso" placeholder="Data reso Noleggio"  /> formControlName="dataReso"   
 
       <hr style="height: 5px; background: teal; margin: 20px 0; box-shadow: 0px 0px 4px 2px rgba(204,204,204,1);">
 
@@ -34,16 +34,15 @@
         <img src="../../assets/img/visa.png" alt="" style="height: 1rem; margin: 5px" />
         <img src="../../assets/img/Bancomat.jpg" alt="" style="height: 1rem; margin: 5px" />
       </label>
-      <input type="text" class="form-control" id="carta" placeholder="Numero della carta" />
+      <input type="text" class="form-control" id="carta" placeholder="Numero della carta" />formControlName="carta" 
 
       <hr style="height: 5px; background: teal; margin: 20px 0; box-shadow: 0px 0px 4px 2px rgba(204,204,204,1);">
 
 
-      <button type="number" class="btn btn-primary">Invia richiesta</button>
+      <button type="number" class="btn btn-primary" >Invia richiesta</button>
       <button type="number" class="btn btn-danger" routerLink="/contcli">Ritorna alla lista contratti</button>
     </div>
   </form>
-    <div class="col-lg-4">PROVA</div>
   </div>
   
 </div>
