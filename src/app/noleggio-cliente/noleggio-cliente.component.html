@@ -15,12 +15,16 @@
       </div>
 
       <label for="selezione">Seleziona l'auto che desideri noleggiare</label>
-      <select class="form-select" id="selezione">
+      <select class="form-select" id="selezione" >
 
         <option *ngFor="let vettura of vetture" value="vettura"  >{{vettura.marca}} - {{vettura.modello}}</option>formControlName="idVettura"
 
       </select>
       
+      <label for="selezione">Il tipo di contratto selezionato:</label>
+      <p>contratto.titolo</p>
+
+
           <label for="nome">Data inizio noleggio</label>
           <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio"  />formControlName="dataInizio"
           <label for="nome">Data reso noleggio</label>

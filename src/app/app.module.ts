@@ -7,7 +7,6 @@ import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarNoleggiatoreComponent } from './navbar-noleggiatore/navbar-noleggiatore.component';
 import { VetturaComponent } from './vettura/vettura.component';
-import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NavbarClienteComponent } from './navbar-cliente/navbar-cliente.component';
 import { NoleggioClienteComponent } from './noleggio-cliente/noleggio-cliente.component';
@@ -30,7 +29,6 @@ import { FormContrattoComponent } from './contratto/form-contratto/form-contratt
     FooterComponent,
     NavbarNoleggiatoreComponent,
     VetturaComponent,
-    HomeComponent,
     LogInComponent,
     NavbarClienteComponent,
     NoleggioClienteComponent,

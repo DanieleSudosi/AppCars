@@ -2,7 +2,6 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContrattoClienteComponent } from './contratto-cliente/contratto-cliente.component';
 import { ContrattoComponent } from './contratto/contratto.component';
-import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NoleggioClienteComponent } from './noleggio-cliente/noleggio-cliente.component';
 import { ParcoVetturaComponent } from './parco-vettura/parco-vettura.component';
@@ -19,7 +18,7 @@ import { FormContrattoComponent } from './contratto/form-contratto/form-contratt
 const routes: Routes = [
   //PATH IN COMUNE
   {path: '',component:LogInComponent},
-  {path:'home',component:HomeComponent},
+
   {path: 'login', component:LogInComponent},
   {path: 'signup', component:SignUpComponent},
   
