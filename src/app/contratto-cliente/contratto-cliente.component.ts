@@ -12,7 +12,7 @@ export class ContrattoClienteComponent implements OnInit {
   constructor(private service: ContrattoService) { }
 
   ngOnInit(): void {
-    this.service.get().subscribe(response =>{
+    this.service.getContratti().subscribe(response =>{
       this.contratti=response;
     });
   }
