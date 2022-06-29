@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { filter } from 'rxjs';
 import { Vettura } from '../models/vettura';
 import { VetturaService } from '../vettura/vettura.service';
 
@@ -34,6 +35,7 @@ Object.keys(TipoFiltro).forEach(filter => {
   this.listaVetture(filter);
 });
 }
+
 pulisci() {
   this.filters = {
     marca: '',
