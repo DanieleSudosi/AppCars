@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Vettura } from '../models/vettura';
 import { VetturaService } from '../vettura/vettura.service';
@@ -10,7 +11,8 @@ import { VetturaService } from '../vettura/vettura.service';
 })
 export class ParcoVetturaComponent implements OnInit {
 
-  constructor(private service: VetturaService) { }
+  constructor(private service: VetturaService,
+    private route: Router) { }
 
   vetture: any = [];
 
@@ -55,6 +57,11 @@ pulisci() {
     return vetture.filter((v: any) => {
       return v[tipoFiltro].toLowerCase().includes(this.filters[tipoFiltro].toLowerCase());
     })
+  }
+
+  onVetturaSelected(v: Vettura){
+    localStorage.setItem("vettura", v.id.toString())
+    this.route.navigate(["contcli"])
   }
 
 }

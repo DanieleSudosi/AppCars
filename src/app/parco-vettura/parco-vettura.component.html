@@ -43,7 +43,7 @@
         </h5>
         <p class="card-text"> <strong>alimentazione:</strong> {{ vettura.alimentazione }}</p>
         <p class="card-text">{{ vettura.descrizione }}</p>
-        <a routerLink="/contcli" class="btn btn-success belbox">Vai al contratto</a>
+        <a (click)="onVetturaSelected(vettura)" class="btn btn-success belbox">Vai al contratto</a>
       </div>
     </div>
   </div>

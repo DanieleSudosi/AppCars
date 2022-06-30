@@ -1,5 +1,6 @@
 export class Vettura {
-    constructor(public marca: string,
+    constructor(public id:number,
+        public marca: string,
         public modello: string,
         public alimentazione: string,
         public descrizione: string,
