@@ -30,7 +30,7 @@ export class ContrattoComponent implements OnInit {
       titoloContratto: ['', this.validatore],
       descrizioneContratto: ['', this.validatore],
       durataMax: ['', this.validatore],
-      durataMin: ['', this.validatore, Validators.min(12)],
+      durataMin: ['', [this.validatore, Validators.min(12)]],
       servizi:['',this.validatore],
   });
 
@@ -58,7 +58,7 @@ export class ContrattoComponent implements OnInit {
     });
   }
 
-  modificaContratto(c: Contratto) {
+  modificaContratto(c: any) {
     this.showForm = false;
     this.form.patchValue(c);
     this.update = true;

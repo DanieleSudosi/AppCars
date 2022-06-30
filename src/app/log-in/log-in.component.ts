@@ -24,7 +24,7 @@ export class LogInComponent implements OnInit {
   login() {
     this.service.LoginUtente(this.form.value).subscribe({
       next: (res) => {
-        this.route.navigate(["home"])
+        this.route.navigate(["contnol"])
         localStorage.clear();
         localStorage.setItem("utente",res)
   

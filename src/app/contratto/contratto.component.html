@@ -56,11 +56,11 @@
   </div>
   <div class="form-group">
       <label for="servizi">Aggiungi Servizi</label>
-      <select class="form-select select select--multiple" id="servizi">
-          <option *ngFor="let servizio of servizi" value="servizio">{{servizio.nomeServizio}}</option>
+      <select class="form-select select select--multiple" id="servizi" formControlName="servizi" multiple>
+          <option *ngFor="let servizio of servizi" [ngValue]="servizio">{{servizio.nomeServizio}}</option>
         </select>
   </div>
-  <input type="submit" class="btn btn-success" value="Modifica"/>
+  <input type="submit" class="btn btn-success"  (click)="updateContratto()" value="Modifica"/>
 </form>
 </div>
 <app-form-contratto *ngIf="showForm"></app-form-contratto>
