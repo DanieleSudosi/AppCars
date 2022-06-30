@@ -77,4 +77,9 @@ getServizi() {
     this.servizi = response;
   });
 }
+
+onContrattoSelected(c: Contratto){
+  localStorage.setItem("contratto", c.id.toString())
+}
+
 }

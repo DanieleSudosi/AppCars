@@ -9,7 +9,7 @@
             <p class="card-text text-info">costo: {{contratto.costoMensile}} €</p>
             <p class="card-text text-success">Durata minima: {{contratto.durataMin}}</p>
             <p class="card-text text-danger">Durata massima: {{contratto.durataMax}}</p>
-            <button class="btn btn-success belbox" routerLink="/nolcli">Noleggia</button>
+            <button class="btn btn-success belbox" (click)="onContrattoSelected(contratto)">Noleggia</button>
           </div>
         </div>
       </div>
