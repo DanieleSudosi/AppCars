@@ -18,6 +18,7 @@ export class NoleggioClienteComponent implements OnInit {
   ) {}
 
   validatore = Validators.required;
+  
   form: FormGroup = this.FormBuilder.group({
     noleggiatoreId: [''],
     vetturaId: [''],
@@ -27,6 +28,8 @@ export class NoleggioClienteComponent implements OnInit {
     clienteId: [''],
   });
 
+  dataInizio: any =  new Date();
+  dataReso: any =  new Date();
   vetture: any = [];
   contratti: any = [];
   noleggiatori: any = [];
@@ -35,6 +38,8 @@ export class NoleggioClienteComponent implements OnInit {
     this.getVetture();
     this.getContratti();
     this.getNoleggiatori();
+    this.loadFromLocalStorage();
+    this.initializeDate();
   }
   public getVetture() {
     this.service.getVetture().subscribe((response) => {
@@ -52,4 +57,30 @@ export class NoleggioClienteComponent implements OnInit {
       this.noleggiatori = response;
     });
   }
+
+sendTicket(){
+  //TODO
 }
+
+loadFromLocalStorage(){
+  const vettura = localStorage.getItem('vettura')
+  const contratto = localStorage.getItem('contratto')
+  if(vettura){
+    this.form.patchValue({vetturaId:parseInt(vettura,10)})
+  }
+  if(contratto){
+    this.form.patchValue({contrattoId:parseInt(contratto,10)})
+  }
+}
+
+
+initializeDate(){
+  this.dataReso.setFullYear(this.dataReso.getFullYear()+1)
+  this.dataReso = this.dataReso.toISOString().split('T')[0]
+  this.dataInizio = this.dataInizio.toISOString().split('T')[0]
+this.form.patchValue({dataInizio:this.dataInizio, dataReso:this.dataReso})
+}
+
+}
+
+

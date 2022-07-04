@@ -12,38 +12,37 @@
               box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);
             " />
           <label for="selezNoleggiatore">chi ti ha servito:</label>
-          <select class="form-select" id="selezNoleggiatore">
-            <option *ngFor="let noleggiatore of noleggiatori" [ngValue]="noleggiatore">
+          <select class="form-select" id="selezNoleggiatore" formControlName="noleggiatoreId">
+            <option *ngFor="let noleggiatore of noleggiatori" [ngValue]="noleggiatore.id" >
               {{ noleggiatore.nome }} - {{ noleggiatore.cognome }}
             </option>
           </select>
 
           <label for="selezAuto">Seleziona l'auto che desideri noleggiare</label>
-          <select class="form-select" id="selezAuto">
-            <option *ngFor="let vettura of vetture" [ngValue]="vettura">
+          <select class="form-select" id="selezAuto" formControlName="vetturaId">
+            <option *ngFor="let vettura of vetture" [ngValue]="vettura.id">
               {{ vettura.marca }} - {{ vettura.modello }}
             </option>
           </select>
           <label for="selezContratto">Scegli il tipo di contratto:</label>
-          <select class="form-select" id="selezContratto">
-            <option *ngFor="let contratto of contratti" [ngValue]="contratto">
+          <select class="form-select" id="selezContratto" formControlName="contrattoId">
+            <option *ngFor="let contratto of contratti" [ngValue]="contratto.id">
               {{ contratto.titoloContratto }} - {{ contratto.costoMensile }} €
             </option>
           </select>
 
-          <label for="nome">Data inizio noleggio</label>
-          <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio" />
-          <label for="nome">Data reso noleggio</label>
-          <input type="date" class="form-control" id="dataReso" placeholder="Data reso Noleggio" />
+          <label for="dataInizio">Data inizio noleggio</label>
+          <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio"  formControlName="dataInizio"/>
+          <label for="dataReso">Data reso noleggio</label>
+          <input type="date" class="form-control" id="dataReso" placeholder="Data reso Noleggio"  formControlName="dataReso" min="{{dataReso}}" />
 
           <hr style="
               height: 5px;
               background: teal;
               margin: 20px 0;
-              box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);
-            " />
+              box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);" />
 
-          <button type="number" class="btn btn-primary">Invia richiesta</button>
+          <button type="number" class="btn btn-primary" (click)="sendTicket()">Invia richiesta</button>
           <button type="number" class="btn btn-danger" routerLink="/contcli">
             Ritorna alla lista contratti
           </button>
@@ -54,27 +53,39 @@
       <div class="container-lg text-center">
         <div class="row">
           <div class="col-auto">
-            <h2 class="text-info m-3">il contratto selezionato:</h2>
-            <div *ngFor="let contratto of contratti" class="card d-lg-inline-flex" style="width: 10rem">
+            <h2 class="text-info m-3">Riepilogo selezione:</h2>
+            <div *ngFor="let contratto of contratti" [id]="contratto.id" class="card d-lg-inline-flex" style="width: 10rem">
               <div class="card-body">
-                <h5 class="card-title">
-                  Contratto {{ contratto.titoloContratto }}
+                <h5 class="card-title" >
+                  Contratto: {{ contratto.titoloContratto }}
                 </h5>
-                <p class="card-text">costo: {{ contratto.costoMensile }}</p>
-                <p class="card-text">
-                  Durata minima: {{ contratto.durataMin }}
-                </p>
-                <p class="card-text">
-                  Durata massima: {{ contratto.durataMax }}
+                <p>
+                  durata: {{contratto.durataMin}} - {{contratto.durataMax}}
                 </p>
               </div>
+            </div>
+            <div *ngFor="let vettura of vetture" [id]="vettura.id" class="card d-lg-inline-flex" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title" >
+                  Vettura: {{ vettura.marca }} - {{ vettura.modello }}
+                </h5>
+              </div>
+            </div>
+            <div *ngFor="let noleggiatore of noleggiatori" [id]="noleggiatore.id" class="card d-lg-inline-flex" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title" >
+                  Ti ha servito: {{ noleggiatore.nome }} - {{ noleggiatore.cognome }}
+                </h5>
+              </div>
+            </div>
+                
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <!-- ottimo form per i pagamenti -->
 
