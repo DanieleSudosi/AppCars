@@ -12,7 +12,7 @@ export class LogInService {
   url = "http://localhost:8091/api/login"
 
   LoginUtente(u: UtenteDTO) {
-    return this.http.post(this.url, u,{responseType: 'text'} );
+    return this.http.post(this.url, u);
   }
 
 }

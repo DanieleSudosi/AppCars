@@ -43,7 +43,7 @@
               margin: 20px 0;
               box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);" />
 
-          <button type="number" class="btn btn-primary" (click)="sendTicket()">Invia richiesta</button>
+          <button type="number" class="btn btn-primary" (click)="sendTicket()" [disabled]="form.invalid">Invia richiesta</button>
           <button type="number" class="btn btn-danger" routerLink="/contcli">
             Ritorna alla lista contratti
           </button>

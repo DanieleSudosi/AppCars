@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContrattoService } from '../contratto/contratto.service';
 import { UtenteService } from '../contratto/utente.service';
 import { VetturaService } from '../vettura/vettura.service';
+import { NoleggioService } from './noleggio.service';
 
 @Component({
   selector: 'app-noleggio-cliente',
@@ -14,6 +15,7 @@ export class NoleggioClienteComponent implements OnInit {
     private service: VetturaService,
     private service1: ContrattoService,
     private service2: UtenteService,
+    private service3: NoleggioService,
     private FormBuilder: FormBuilder
   ) {}
 
@@ -33,13 +35,16 @@ export class NoleggioClienteComponent implements OnInit {
   vetture: any = [];
   contratti: any = [];
   noleggiatori: any = [];
+  noleggi: any = [];
 
   ngOnInit(): void {
     this.getVetture();
     this.getContratti();
     this.getNoleggiatori();
+    this.getNoleggi();
     this.loadFromLocalStorage();
     this.initializeDate();
+    this.form.patchValue({clienteId:parseInt(localStorage.getItem('utenteId')||'',10)})
   }
   public getVetture() {
     this.service.getVetture().subscribe((response) => {
@@ -57,9 +62,20 @@ export class NoleggioClienteComponent implements OnInit {
       this.noleggiatori = response;
     });
   }
+  public getNoleggi() {
+    this.service3.getNoleggi().subscribe((response) => {
+      this.noleggi = response;
+    });
+  }
+
 
 sendTicket(){
   //TODO
+  this.service3.addNoleggio(this.form.value).subscribe(() => {
+    this.getNoleggi();
+    alert('richiesta inviata')
+  });
+  
 }
 
 loadFromLocalStorage(){

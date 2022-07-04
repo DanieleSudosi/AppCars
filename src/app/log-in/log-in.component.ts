@@ -22,14 +22,15 @@ export class LogInComponent implements OnInit {
   });
 
   login() {
+
     this.service.LoginUtente(this.form.value).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         this.route.navigate(["contnol"])
         localStorage.clear();
-        localStorage.setItem("utente",res)
-  
+        localStorage.setItem("utente", res['tipologia']);
+        localStorage.setItem("utenteId", res['id']);
       },
-      error: (res) => alert(res.error),
+      error: (res) => alert(res.error.messaggio),
     });
   }
   // }
