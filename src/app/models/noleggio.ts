@@ -1,7 +1,7 @@
 export class Noleggio {
     constructor(public id:number,
-        public dataInizio: string,
-        public dataReso: string,
+        public dataInizio: Date,
+        public dataReso: Date,
         public stato: string,
         public clienteId: number,
         public noleggiatoreId: number,
