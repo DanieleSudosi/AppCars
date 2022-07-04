@@ -33,11 +33,6 @@ export class ParcoVetturaComponent implements OnInit {
 }
 
 cerca() {
-  this.filters = {
-    marca: '',
-    modello: '',
-    alimentazione: ''
-  }
 Object.keys(TipoFiltro).forEach(filter => {
   this.listaVetture(filter);
 });
