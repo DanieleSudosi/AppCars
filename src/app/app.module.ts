@@ -21,6 +21,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
 import { FormVettureComponent } from './vettura/form-vetture/form-vetture.component';
 import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
+import { RichiestaNoleggiComponent } from './richiesta-noleggi/richiesta-noleggi.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { FormContrattoComponent } from './contratto/form-contratto/form-contratt
     SignUpComponent,
     FormServiziComponent,
     FormVettureComponent,
-    FormContrattoComponent
+    FormContrattoComponent,
+    RichiestaNoleggiComponent
   ],
   imports: [
     BrowserModule,

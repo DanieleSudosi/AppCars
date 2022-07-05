@@ -29,6 +29,9 @@ export class LogInComponent implements OnInit {
         localStorage.clear();
         localStorage.setItem("utente", res['tipologia']);
         localStorage.setItem("utenteId", res['id']);
+        if(res.carta){
+          localStorage.setItem("carta", res['carta']);
+        }
       },
       error: (res) => alert(res.error.messaggio),
     });

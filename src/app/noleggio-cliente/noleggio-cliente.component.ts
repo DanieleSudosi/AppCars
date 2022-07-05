@@ -70,7 +70,7 @@ export class NoleggioClienteComponent implements OnInit {
 
 
 sendTicket(){
-  //TODO
+
   this.service3.addNoleggio(this.form.value).subscribe(() => {
     this.getNoleggi();
     alert('richiesta inviata')

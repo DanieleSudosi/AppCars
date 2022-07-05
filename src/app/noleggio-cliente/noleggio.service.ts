@@ -11,8 +11,7 @@ export class NoleggioService {
 
   url = "http://localhost:8091/api/noleggio"
 
-  addNoleggio(n: Noleggio) {
-  
+  addNoleggio(n: any) {
     return this.http.post(this.url, n);
   }
 
@@ -24,11 +23,11 @@ export class NoleggioService {
     return this.http.get(this.url + "/" + id);
   }
 
-  updateServizio(n: Noleggio) {
+  updateNoleggio(n: Noleggio) {
     return this.http.put(this.url, n);
   }
 
-  deleteServizio(id: Number) {
+  deleteNoleggio(id: Number) {
     return this.http.request('delete', `${this.url}/${id}`);
   }
 }
