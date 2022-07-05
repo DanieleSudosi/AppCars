@@ -18,13 +18,20 @@ export class NoleggioService {
   getNoleggi(){
     return this.http.get(this.url);
   }
+  getNoleggiByStato(stato: string){
+    return this.http.get(this.url + "/stato/" + stato);
+  }
 
-  getNoleggio(id: Number) {
+  getNoleggio(id: number) {
     return this.http.get(this.url + "/" + id);
   }
 
   updateNoleggio(n: Noleggio) {
     return this.http.put(this.url, n);
+  }
+
+  updateNoleggioByStato(n: Noleggio,stato : string) {
+    return this.http.put(this.url + "/" + stato, n );
   }
 
   deleteNoleggio(id: Number) {

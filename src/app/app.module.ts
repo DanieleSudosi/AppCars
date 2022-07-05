@@ -13,7 +13,6 @@ import { NoleggioClienteComponent } from './noleggio-cliente/noleggio-cliente.co
 import { ServiziOffertiComponent } from './servizi-offerti/servizi-offerti.component';
 import { ParcoVetturaComponent } from './parco-vettura/parco-vettura.component';
 import { ContrattoClienteComponent } from './contratto-cliente/contratto-cliente.component';
-import { WorkingProgessComponent } from './working-progess/working-progess.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiziComponent } from './servizi/servizi.component';
 import { ContrattoComponent } from './contratto/contratto.component';
@@ -36,7 +35,6 @@ import { RichiestaNoleggiComponent } from './richiesta-noleggi/richiesta-noleggi
     ServiziOffertiComponent,
     ParcoVetturaComponent,
     ContrattoClienteComponent,
-    WorkingProgessComponent,
     ServiziComponent,
     ContrattoComponent,
     SignUpComponent,

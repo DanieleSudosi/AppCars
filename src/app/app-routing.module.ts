@@ -9,10 +9,10 @@ import { ServiziOffertiComponent } from './servizi-offerti/servizi-offerti.compo
 import { ServiziComponent } from './servizi/servizi.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VetturaComponent } from './vettura/vettura.component';
-import { WorkingProgessComponent } from './working-progess/working-progess.component';
 import { FormServiziComponent } from './servizi/form-servizi/form-servizi.component';
 import { FormVettureComponent } from './vettura/form-vetture/form-vetture.component';
 import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
+import { RichiestaNoleggiComponent } from './richiesta-noleggi/richiesta-noleggi.component';
 
 
 const routes: Routes = [
@@ -25,7 +25,6 @@ const routes: Routes = [
 
   //PATH NOLEGGIATORE
   
-  {path: 'working', component: WorkingProgessComponent},
   {path: 'contnol',component: ContrattoComponent,children:[
     {path: 'formContratto', component: FormContrattoComponent}]},
     
@@ -34,6 +33,8 @@ const routes: Routes = [
 
   {path: 'servizi', component: ServiziComponent,children:[
     {path: 'formservizi', component: FormServiziComponent}]},
+
+    {path: 'richiestaNoleggio', component:RichiestaNoleggiComponent},
   
   //PATH CLIENTE
   

@@ -1,1 +1,19 @@
-<p>richiesta-noleggi works!</p>
+<div class="container-lg text-center">
+    <div class="row">
+      <div class="col-auto">
+        <h2 class="text-info m-3">Richieste noleggio da controllare</h2>
+        <div *ngFor="let noleggio of noleggi" class="card d-inline-flex" style="width: 25rem">
+          <div class="card-body">
+            <h5 class="card-title">
+             Contratto scelto: {{ noleggio.contratto?.titoloContratto }} 
+            </h5>
+            <p class="card-text"> numero della carta : {{ noleggio.cliente?.carta }} </p>
+            <p class="card-text"> data inizio noleggio: {{ noleggio.dataInizio }}</p>
+            <p class="card-text"> data reso: {{ noleggio.dataReso }}</p>
+            <a class="btn btn-primary" (click)="modificaStato(noleggio,'APPROVATO')">Approva</a>
+            <a class="btn btn-danger" (click)="modificaStato(noleggio,'RESPINTO')">Respingi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
