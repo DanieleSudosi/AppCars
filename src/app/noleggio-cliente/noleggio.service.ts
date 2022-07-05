@@ -12,6 +12,7 @@ export class NoleggioService {
   url = "http://localhost:8091/api/noleggio"
 
   addNoleggio(n: Noleggio) {
+  
     return this.http.post(this.url, n);
   }
 
