@@ -13,6 +13,7 @@ import { FormServiziComponent } from './servizi/form-servizi/form-servizi.compon
 import { FormVettureComponent } from './vettura/form-vetture/form-vetture.component';
 import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
 import { RichiestaNoleggiComponent } from './richiesta-noleggi/richiesta-noleggi.component';
+import { NoleggiComponent } from './noleggi/noleggio.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
     {path: 'formservizi', component: FormServiziComponent}]},
 
     {path: 'richiestaNoleggio', component:RichiestaNoleggiComponent},
+    {path: 'noleggio', component:NoleggiComponent},
   
   //PATH CLIENTE
   

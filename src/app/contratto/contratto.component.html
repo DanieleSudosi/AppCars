@@ -9,6 +9,9 @@
           <p class="card-text">costo: {{contratto.costoMensile}}</p>
           <p class="card-text">Durata minima: {{contratto.durataMin}}</p>
           <p class="card-text">Durata massima: {{contratto.durataMax}}</p>
+          <p class="card-text text-black">I servizi disponibili : 
+            <span *ngFor="let servizio of contratto.servizi; let last = last">{{servizio.nomeServizio}}{{last?'':', '}}</span>
+          </p>
           <a (click)="modificaContratto(contratto)" class="btn btn-primary"> modifica </a>
           <a (click)="deleteContratto(contratto.id)" class="btn btn-danger"> elimina </a>
         </div>

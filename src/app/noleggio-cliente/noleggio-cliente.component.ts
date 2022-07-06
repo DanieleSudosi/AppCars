@@ -30,12 +30,23 @@ export class NoleggioClienteComponent implements OnInit {
     clienteId: [''],
   });
 
+  //variabili
   dataInizio: any =  new Date();
   dataReso: any =  new Date();
-  vetture: any = [];
-  contratti: any = [];
-  noleggiatori: any = [];
+
   noleggi: any = [];
+
+  liste: any ={
+    vetturas: [],
+    contrattos:[],
+    noleggiatores:[]
+  };
+
+  riepilogo: any = {
+    noleggiatoreId: null,
+    vetturaId: null,
+    contrattoId: null
+  };
 
   ngOnInit(): void {
     this.getVetture();
@@ -48,18 +59,17 @@ export class NoleggioClienteComponent implements OnInit {
   }
   public getVetture() {
     this.service.getVetture().subscribe((response) => {
-      this.vetture = response;
+      this.liste.vetturas = response;
     });
   }
-
   public getContratti() {
     this.service1.getContratti().subscribe((response) => {
-      this.contratti = response;
+      this.liste.contrattos = response;
     });
   }
   public getNoleggiatori() {
     this.service2.getNoleggiatori().subscribe((response) => {
-      this.noleggiatori = response;
+      this.liste.noleggiatores = response;
     });
   }
   public getNoleggi() {
@@ -95,6 +105,11 @@ initializeDate(){
   this.dataReso = this.dataReso.toISOString().split('T')[0]
   this.dataInizio = this.dataInizio.toISOString().split('T')[0]
 this.form.patchValue({dataInizio:this.dataInizio, dataReso:this.dataReso})
+}
+
+
+onSwitch(field: string){
+  this.riepilogo[field] = this.liste[field.slice(0,-2)+'s'].filter((x:any)=> x.id === this.form.controls[field].value)[0];
 }
 
 }
