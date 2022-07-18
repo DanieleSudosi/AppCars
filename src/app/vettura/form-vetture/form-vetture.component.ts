@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { VetturaService } from '../vettura.service';
+import { VetturaService } from '../../services/vettura.service';
 
 @Component({
   selector: 'app-form-vetture',
@@ -22,15 +22,28 @@ export class FormVettureComponent implements OnInit {
     alimentazione: [''],
     descrizione: [''],
     quantita: [''],
-    // img: [''],
+    noleggiatoreId:['']
   });
 
+  alimentazione: any = { 
+    BENZINA: '',
+    DISEL:'',
+    GPL:'',
+    ELETTRICA:'',
+    HYBRID:'',
+  };
+
   ngOnInit(): void {
+    this.form.patchValue({ noleggiatoreId: parseInt(localStorage.getItem('noleggiatoreId') || '',10), });
   }
 
   addVettura() {
-    this.service.addVettura(this.form.value).subscribe(() => {
+    this.service.insert(this.form.value).subscribe(() => {
       alert('Vettura creata con successo')
     });
   }
+
+  keys(obj?: any) : Array<string> {
+    return Object.keys(obj);
+    }
 }

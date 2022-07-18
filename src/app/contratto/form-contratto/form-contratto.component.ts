@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServizioService } from 'src/app/servizi/servizio.service';
-import { ContrattoService } from '../contratto.service';
+import { ServizioService } from 'src/app/services/servizio.service';
+import { ContrattoService } from 'src/app//services/contratto.service';
 
 @Component({
   selector: 'app-form-contratto',
@@ -27,19 +27,28 @@ export class FormContrattoComponent implements OnInit {
       durataMin: ['', [this.validatore, Validators.min(12)]],
     servizi:['',this.validatore],
   });
+    formSearch: FormGroup = this.formBuilder.group({
+      costoMensile: [''],
+      titoloContratto: [''],
+      descrizioneContratto: [''],
+      durataMax: [''],
+      durataMin: [''],
+      servizi:[''],
+  });
 
   ngOnInit(): void {
     this.getServizi();
   }
 
+  //
   getServizi() {
-    this.servizioService.getServizi().subscribe(response => {
+    this.servizioService.query({}).subscribe(response => {
       this.servizi = response;
     });
   }
   
   saveContratti(){
-    this.service.addContratto(this.form.value).subscribe(() => {
+    this.service.insert(this.form.value).subscribe(() => {
       alert('Contratto creato con successo')
     });
 

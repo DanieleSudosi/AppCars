@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtenteDTO } from '../models/utenteDTO';
-import { LogInService } from './log-in.service';
+import { LogInService } from '../services/log-in.service';
 
 @Component({
   selector: 'app-log-in',
@@ -22,29 +22,23 @@ export class LogInComponent implements OnInit {
   });
 
   login() {
-
-    this.service.LoginUtente(this.form.value).subscribe({
+    this.service.insert(this.form.value).subscribe({
       next: (res: any) => {
-        this.route.navigate(["contnol"])
         localStorage.clear();
-        localStorage.setItem("utente", res['tipologia']);
-        localStorage.setItem("utenteId", res['id']);
-        if(res.carta){
-          localStorage.setItem("carta", res['carta']);
+        localStorage.setItem('utente', res['tipologia']);
+        if (res['tipologia'] === 'NOLEGGIATORE') {
+          this.route.navigate(['contnol']);
+          localStorage.setItem('noleggiatoreId', res['id']);
+        } else {
+          this.route.navigate(['contcli']);
+          localStorage.setItem('clienteId', res['id']);
+          if (res.carta) {
+            localStorage.setItem('carta', res['carta']);
+          }
         }
       },
       error: (res) => alert(res.error.messaggio),
     });
   }
-  // }
-
-  // if(utente.admin) {
-  //   this.router.navigate(["appuntamenti"]);
-  // } else {
-  //   localStorage.clear();
-  //   localStorage.setItem("id", "" + utente.id)
-  //   this.router.navigate(["home"]);
-  // }
-
   ngOnInit(): void {}
 }

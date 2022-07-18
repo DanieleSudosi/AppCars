@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
 import { Vettura } from '../models/vettura';
-import { VetturaService } from '../vettura/vettura.service';
+import { VetturaService } from '../services/vettura.service';
 
 @Component({
   selector: 'app-parco-vettura',
@@ -12,58 +12,59 @@ import { VetturaService } from '../vettura/vettura.service';
 export class ParcoVetturaComponent implements OnInit {
 
   constructor(private service: VetturaService,
-    private route: Router) { }
+    private route: Router,
+    private formBuilder: FormBuilder) { }
+
+    searchform: FormGroup = this.formBuilder.group({
+      id: [''],
+      marca: [''],
+      modello: [''],
+      alimentazione: null
+    });
 
   vetture: any = [];
+  vetturaId:any ;
+  noleggiatoreId: any;
+  // lista: any[];
 
-  filters = {
-    marca: '',
-    modello: '',
-    alimentazione: ''
-  }
+  alimentazione: any = { 
+    BENZINA: '',
+    DISEL:'',
+    GPL:'',
+    ELETTRICA:'',
+    HYBRID:'',
+  };
 
   ngOnInit(): void {
-    this.getVetture();
+    this.getVettureFilter();
   }
 
-  getVetture(){
-  this.service.getVetture().subscribe(response =>{
-    this.vetture = response;
-  });
-}
+  // getVetture() {
+  //   this.service.query().subscribe((response) => {
+  //     this.vetture = response;
+  //   });
+  // }
 
-cerca() {
-Object.keys(TipoFiltro).forEach(filter => {
-  this.listaVetture(filter);
-});
-}
-
-pulisci() {
-  this.filters = {
-    marca: '',
-    modello: '',
-    alimentazione: ''
+  getVettureFilter() {
+    this.service.query(this.searchform.value).subscribe((response) => {
+      this.vetture = response;
+    });
   }
-  this.getVetture();
-}
-
-  listaVetture(tipoFiltro: any){
-    this.vetture = this.filterVetture(this.vetture, tipoFiltro)
-
-}
-
-  
-  filterVetture(vetture: any, tipoFiltro: TipoFiltro){
-    return vetture.filter((v: any) => {
-      return v[tipoFiltro].toLowerCase().includes(this.filters[tipoFiltro].toLowerCase());
-    })
+keys(obj?: any) : Array<string> {
+  return Object.keys(obj);
   }
 
   onVetturaSelected(v: Vettura){
     localStorage.setItem("vettura", v.id.toString())
+    localStorage.setItem("noleggiatoreId",v.noleggiatore.id.toString())
     this.route.navigate(["contcli"])
   }
 
 }
-
-enum TipoFiltro {marca = 'marca', modello = 'modello', alimentazione ='alimentazione'}
+enum Alimentazione {
+  BENZINA = 'BENZIN',
+  DISEL = 'DISEL',
+  GPL = 'GPL',
+  ELETTRICA = 'ELETTRICA',
+  HYBRID = 'HYBRID',
+  }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServizioService } from '../servizio.service';
+import { ServizioService } from '../../services/servizio.service';
 
 @Component({
   selector: 'app-form-servizi',
@@ -25,7 +25,7 @@ export class FormServiziComponent implements OnInit {
   }
 
   addServizio() {
-    this.service.addServizio(this.form.value).subscribe(() => {
+    this.service.insert(this.form.value).subscribe(() => {
       alert('Servizio creato con successo')
     });
    

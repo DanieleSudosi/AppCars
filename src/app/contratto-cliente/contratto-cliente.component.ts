@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContrattoService } from '../contratto/contratto.service';
+import { ContrattoService } from '../services/contratto.service';
 import { Contratto } from '../models/contratto';
 
 @Component({
@@ -15,7 +15,7 @@ export class ContrattoClienteComponent implements OnInit {
               private route: Router) { }
 
   ngOnInit(): void {
-    this.service.getContratti().subscribe(response =>{
+    this.service.query({}).subscribe(response =>{
       this.contratti=response;
     });
   }

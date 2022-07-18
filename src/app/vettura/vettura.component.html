@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-auto">
       <h2 class="text-info m-3">Lista delle vetture</h2>
-      <div *ngFor="let vettura of vetture" class="card d-inline-flex" style="width: 25rem">
+      <div *ngFor="let vettura of vetture" class="card d-inline-flex" style="width: 25rem" >
         <img class="card-img-top" src="..." alt="Card image cap" />
         <div class="card-body">
           <h5 class="card-title">
@@ -44,8 +44,16 @@
       <input type="text" class="form-control m-auto w-auto" placeholder="modello" formControlName="modello" />
     </div>
     <div class="form-group">
+      <!-- <label for="alimentazione">Alimentazione</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="alimentazione" formControlName="alimentazione" /> -->
       <label for="alimentazione">Alimentazione</label>
-      <input type="text" class="form-control m-auto w-auto" placeholder="alimentazione" formControlName="alimentazione" />
+            <select class="form-select belbox m-2" id="alimentazione" formControlName="alimentazione"
+              id="alimentazione">
+              <option selected [ngValue]="null">Seleziona Alimentazione</option>
+              <option *ngFor="let alimentazione of keys(alimentazione)">
+                {{ alimentazione }}
+              </option>
+            </select>
     </div>
     <div class="form-group">
       <label for="descrizione">descrizione</label>

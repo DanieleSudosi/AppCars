@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServizioService } from '../servizi/servizio.service';
+import { ServizioService } from '../services/servizio.service';
 
 @Component({
   selector: 'app-servizi-offerti',
@@ -12,7 +12,7 @@ export class ServiziOffertiComponent implements OnInit {
   servizi: any = [];
 
   ngOnInit(): void {
-    this.service.getServizi().subscribe((response) => {
+    this.service.query().subscribe((response) => {
       this.servizi = response;
     });
   }

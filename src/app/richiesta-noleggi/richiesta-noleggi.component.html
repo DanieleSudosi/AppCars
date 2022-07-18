@@ -10,8 +10,8 @@
             <p class="card-text"> numero della carta : {{ noleggio.cliente?.carta }} </p>
             <p class="card-text"> data inizio noleggio: {{ noleggio.dataInizio }}</p>
             <p class="card-text"> data reso: {{ noleggio.dataReso }}</p>
-            <a class="btn btn-primary" (click)="modificaStato(noleggio,'APPROVATO')">Approva</a>
-            <a class="btn btn-danger" (click)="modificaStato(noleggio,'RESPINTO')">Respingi</a>
+            <a class="btn btn-primary" (click)="modificaStatoQuantita(noleggio,'APPROVATO')">Approva</a>
+            <a class="btn btn-danger" (click)="modificaStatoQuantita(noleggio,'RESPINTO')">Respingi</a>
           </div>
         </div>
       </div>

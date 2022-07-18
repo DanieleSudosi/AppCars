@@ -5,5 +5,6 @@ export class Vettura {
         public alimentazione: string,
         public descrizione: string,
         public quantita: number,
-        public immagine: string){}
+        public noleggiatore:any
+        ){}
 }

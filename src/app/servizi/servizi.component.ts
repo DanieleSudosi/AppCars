@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Servizio } from '../models/servizio';
-import { ServizioService } from './servizio.service';
+import { ServizioService } from '../services/servizio.service';
 
 @Component({
   selector: 'app-servizi',
@@ -38,13 +38,13 @@ export class ServiziComponent implements OnInit {
   }
 
   getServizi() {
-    this.service.getServizi().subscribe((response) => {
+    this.service.query().subscribe((response) => {
       this.servizi = response;
     });
   }
 
   deleteServizio(id: Number) {
-    this.service.deleteServizio(id).subscribe(() => {
+    this.service.delete(id).subscribe(() => {
       this.getServizi();
       alert('servizio eliminato con successo')
     });
@@ -57,7 +57,7 @@ export class ServiziComponent implements OnInit {
   }
 
   updateServizio() {
-    this.service.updateServizio(this.form.value).subscribe(() => {
+    this.service.update(this.form.value).subscribe(() => {
       this.getServizi();
       alert('servizio modificato')
     });

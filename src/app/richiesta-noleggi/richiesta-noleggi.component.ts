@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Noleggio } from '../models/noleggio';
-import { NoleggioService } from '../noleggio-cliente/noleggio.service';
+import { Vettura } from '../models/vettura';
+import { NoleggioService } from '../services/noleggio.service';
 
 
 @Component({
@@ -15,19 +16,20 @@ export class RichiestaNoleggiComponent implements OnInit {
   ) {}
 
   noleggi: any = [];
+  vetture:any = [];
 
   ngOnInit(): void {
     this.getNoleggiInAttesa();
   }
 
   public getNoleggiInAttesa() {
-    this.service.getNoleggiByStato('IN_ATTESA').subscribe((response) => {
+    this.service.query({stato:'IN_ATTESA'}).subscribe((response) => {
       this.noleggi = response;
     });
   }
 
-  public modificaStato(n: Noleggio, stato:string){
-    this.service.updateNoleggioByStato(n,stato).subscribe(()=>{
+  public modificaStatoQuantita(n: Noleggio, stato:string){
+    this.service.queryParam(n,stato).subscribe(()=>{
       this.getNoleggiInAttesa();
       alert(`noleggio ${stato==='APPROVATO'?"approvato": "respinto" } con successo`)
     })
