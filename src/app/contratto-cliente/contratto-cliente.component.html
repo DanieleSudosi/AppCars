@@ -1,4 +1,41 @@
 <div class="container-lg text-center">
+  <div class="row g-2">
+    <h2 class="text-success m-3">Ricerca contratto</h2>
+    <div class="input-group">
+      <div class="col-sm-5 m-3">
+        <label for="costoMensile">Costo mensile</label>
+        <input type="search" class="form-control rounded belbox" placeholder="Ricerca costo"
+          [(ngModel)]="filters.costoMensile" name="keyword" id="costoMensile" />
+      </div>
+      <div class="col-sm-5 m-3">
+        <label for="titoloContratto">Titolo</label>
+        <input type="search" class="form-control rounded belbox" placeholder="Ricerca titolo"
+          [(ngModel)]="filters.titoloContratto" name="keyword" id="titoloContratto" />
+      </div>
+      <div class="col-sm-5 m-3">
+        <label for="descrizioneContratto">Descrizione</label>
+        <input type="search" class="form-control rounded belbox" placeholder="Ricerca descrizione"
+        [(ngModel)]="filters.descrizioneContratto" name="keyword" id="descrizioneContratto" />
+      </div>
+      <div class="col-sm-5 m-3">
+        <label for="durataMax">Durata massima</label>
+        <input type="search" class="form-control rounded belbox" placeholder="Ricerca durata"
+        [(ngModel)]="filters.durataMax" name="keyword" id="durataMax" />
+      </div>
+      <div class="col-sm-5 m-3">
+        <label for="durataMin">Durata minima</label>
+        <input type="search" class="form-control rounded belbox" placeholder="Ricerca durata"
+        [(ngModel)]="filters.durataMin" name="keyword" id="durataMin" />
+      </div>
+     
+      <div class="col-3">
+        <button type="button" class="btn btn-success belbox col-2 w-50 p-2 m-3" (click)="cerca()">Ricerca</button>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-secondary belbox col-2 w-50 p-2 m-3" (click)="pulisci()">Pulisci ricerca</button>
+      </div>
+    </div>
+  </div>
     <div class="row">
       <div class="col-auto">
         <h2 class="text-success m-3">Lista dei contratti</h2>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Contratto } from '../models/contratto';
 import { ServizioService } from '../servizi/servizio.service';
 import { ContrattoService } from './contratto.service';
@@ -18,9 +19,18 @@ export class ContrattoComponent implements OnInit {
   index: Number;
   showForm = false;
 
+  // filters = {
+  //   costoMensile: '',
+  //   titoloContratto: '',
+  //   descrizioneContratto: '',
+  //   durataMax: '',
+  //   durataMin: ''
+  // }
+
   constructor(private service: ContrattoService,
               private formBuilder: FormBuilder,
-              private servizioService: ServizioService
+              private servizioService: ServizioService,
+              private route: Router
     ) {}
   
     validatore = Validators.required;
@@ -29,10 +39,18 @@ export class ContrattoComponent implements OnInit {
       costoMensile: ['', this.validatore],
       titoloContratto: ['', this.validatore],
       descrizioneContratto: ['', this.validatore],
-      durataMax: ['', this.validatore],
+      durataMax: ['', [this.validatore, Validators.min(24)]],
       durataMin: ['', [this.validatore, Validators.min(12)]],
       servizi:['',this.validatore],
   });
+
+  formFilter: FormGroup = this.formBuilder.group({
+    costoMensile: [''],
+    titoloContratto: [''],
+    descrizioneContratto: [''],
+    durataMax: [''],
+    durataMin: ['']
+  })
 
   ngOnInit(): void {
     this.getContratti();
@@ -40,10 +58,20 @@ export class ContrattoComponent implements OnInit {
     };
 
   getContratti(){
-    this.service.getContratti().subscribe(response =>{
+    this.service.postContratti(this.formFilter.value).subscribe(response =>{
       this.contratti=response;
     });
   }
+
+  // listaContratti(tipoFiltro: any){
+  //   this.contratti = this.filterContratti(this.contratti, tipoFiltro)
+  // }
+
+// filterContratti(contratti: any, tipoFiltro: TipoFiltro){
+//   return contratti.filter((c: any) => {
+//     return c[tipoFiltro].toLowerCase().includes(this.filters[tipoFiltro].toLowerCase());
+//   })
+// }
 
   switchForm(){
     this.showForm=true;
@@ -83,3 +111,9 @@ onContrattoSelected(c: Contratto){
 }
 
 }
+
+
+function c(c: any) {
+  throw new Error('Function not implemented.');
+}
+// enum TipoFiltro {costoMensile = 'costoMensile', titoloContratto = 'titoloContratto', descrizioneContratto ='descrizioneContratto', durataMax ='durataMax', durataMin ='durataMin'}

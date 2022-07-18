@@ -17,6 +17,7 @@
               {{ noleggiatore.nome }} - {{ noleggiatore.cognome }}
             </option>
           </select>
+          <app-validazione [control]="form['controls']['noleggiatoreId']"></app-validazione>
 
           <label for="selezAuto">Seleziona l'auto che desideri noleggiare</label>
           <select class="form-select" id="selezAuto" formControlName="vetturaId" (change)="onSwitch('vetturaId')">
@@ -30,13 +31,16 @@
               {{ contratto.titoloContratto }} - {{ contratto.costoMensile }} €
             </option>
           </select>
+          <app-validazione [control]="form['controls']['contrattoId']"></app-validazione>
 
           <label for="dataInizio">Data inizio noleggio</label>
           <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio"
             formControlName="dataInizio" min="{{ dataInizio }}" />
+            <app-validazione [control]="form['controls']['dataInizio']"></app-validazione>
           <label for="dataReso">Data reso noleggio</label>
           <input type="date" class="form-control" id="dataReso" placeholder="Data reso Noleggio"
             formControlName="dataReso" min="{{ dataReso }}" />
+            <app-validazione [control]="form['controls']['dataReso']"></app-validazione>
 
           <hr style="
               height: 5px;

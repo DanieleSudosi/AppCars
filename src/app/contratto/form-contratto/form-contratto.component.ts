@@ -23,7 +23,7 @@ export class FormContrattoComponent implements OnInit {
       costoMensile: ['', this.validatore],
       titoloContratto: ['', this.validatore],
       descrizioneContratto: ['', this.validatore],
-      durataMax: ['', this.validatore],
+      durataMax: ['', [this.validatore, Validators.min(24)]],
       durataMin: ['', [this.validatore, Validators.min(12)]],
     servizi:['',this.validatore],
   });

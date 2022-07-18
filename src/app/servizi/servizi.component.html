@@ -30,10 +30,12 @@
       <label for="nomeServizio">Nome servizio</label>
       <input type="text" class="form-control m-auto w-auto" placeholder="Nome servizio"
         formControlName="nomeServizio" />
+        <app-validazione [control]="form['controls']['nomeServizio']"></app-validazione>
     </div>
     <div class="form-group">
       <label for="descrizioneServizio">Descrizione servizio</label>
       <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="descrizioneServizio" />
+      <app-validazione [control]="form['controls']['descrizioneServizio']"></app-validazione>
     </div>
     <input type="submit" class="btn btn-success" value="Update" (click)="updateServizio()" />
   </form>

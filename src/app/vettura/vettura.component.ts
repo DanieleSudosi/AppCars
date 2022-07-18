@@ -25,6 +25,14 @@ export class VetturaComponent implements OnInit {
     // immagine: [''],
   });
 
+  liste: any ={
+    alimentaziones: []
+  };
+
+  riepilogo: any = {
+    alimentazioni: null
+  };
+
 
   vetture: any = [];
   id: number;
@@ -34,6 +42,7 @@ export class VetturaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVetture();
+    this.liste.alimentaziones=Object.keys(Alimentazione);
   };
 
   getVetture(){
@@ -68,5 +77,22 @@ updateVettura() {
   this.update = false;
 }
 
+loadFromLocalStorage(){
+  const alimentazione = localStorage.getItem('alimentazione')
+  if(alimentazione){
+    this.form.patchValue({vetturaId:parseInt(alimentazione,10)})
+  }
+}
 
+onSwitch(field: string){
+  this.riepilogo[field] = this.liste[field.slice(0,-2)+'s'].filter((x:any)=> x.id === this.form.controls[field].value)[0];
+}
+}
+
+export enum Alimentazione {
+  DISEL = "DISEL",
+  BENZINA = "BENZINA",
+  ELETTRICA = "ELETTRICA",
+  GPL = "GPL",
+  HYBRID = "HYBRID"
 }

@@ -22,6 +22,7 @@ import { FormVettureComponent } from './vettura/form-vetture/form-vetture.compon
 import { FormContrattoComponent } from './contratto/form-contratto/form-contratto.component';
 import { RichiestaNoleggiComponent } from './richiesta-noleggi/richiesta-noleggi.component';
 import { NoleggiComponent } from './noleggi/noleggio.component';
+import { ValidazioneComponent } from './validazione/validazione.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NoleggiComponent } from './noleggi/noleggio.component';
     FormVettureComponent,
     FormContrattoComponent,
     RichiestaNoleggiComponent,
-    NoleggiComponent
+    NoleggiComponent,
+    ValidazioneComponent
   ],
   imports: [
     BrowserModule,

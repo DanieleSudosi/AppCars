@@ -1,20 +1,59 @@
 <div class="container-lg text-center">
-  <div class="row">
-    <div class="col-auto">
-      <h2 class="text-info m-3">Lista dei contratti</h2>
-      <div *ngFor="let contratto of contratti" class="card d-lg-inline-flex" style="width: 25rem">
-        <div class="card-body">
-          <h5 class="card-title">Contratto {{contratto.titoloContratto}}</h5>
-          <p class="card-text"> {{contratto.descrizioneContratto}}</p>
-          <p class="card-text">costo: {{contratto.costoMensile}}</p>
-          <p class="card-text">Durata minima: {{contratto.durataMin}}</p>
-          <p class="card-text">Durata massima: {{contratto.durataMax}}</p>
-          <p class="card-text text-black">I servizi disponibili : 
-            <span *ngFor="let servizio of contratto.servizi; let last = last">{{servizio.nomeServizio}}{{last?'':', '}}</span>
-          </p>
-          <a (click)="modificaContratto(contratto)" class="btn btn-primary"> modifica </a>
-          <a (click)="deleteContratto(contratto.id)" class="btn btn-danger"> elimina </a>
+  <div class="row g-2">
+    <h2 class="text-success m-3">Ricerca i contratti</h2>
+    <form [formGroup]="formFilter">
+      <div class="input-group">
+        <div class="col-12">
+          <label for="titoloContratto">Titolo</label>
+          <input type="search" class="form-control rounded belbox" placeholder="Ricerca titolo"
+            formControlName="titoloContratto" id="titoloContratto" />
         </div>
+        <div class="col-12">
+          <label for="costoMensile">Costo mensile</label>
+          <input type="search" class="form-control rounded belbox" placeholder="Ricerca costo"
+            formControlName="costoMensile" id="costoMensile" />
+        </div>
+        <div class="col-12">
+          <label for="descrizioneContratto">Descrizione</label>
+          <input type="search" class="form-control rounded belbox" placeholder="Ricerca descrizione"
+            formControlName="descrizioneContratto" id="descrizioneContratto" />
+        </div>
+        <div class="col-12">
+          <label for="durataMax">Durata massima</label>
+          <input type="number" class="form-control rounded belbox" placeholder="Ricerca durata"
+            formControlName="durataMax" id="durataMax" min="24" />
+        </div>
+        <div class="col-12">
+          <label for="durataMin">Durata minima</label>
+          <input type="number" class="form-control rounded belbox" placeholder="Ricerca durata"
+            formControlName="durataMin" id="durataMin" />
+        </div>
+      </div>
+      <div class="row col-12 center">
+      <div class="col-5">
+        <button type="button" class="btn btn-success belbox col-2 w-50 p-2 m-3" (click)="getContratti()">Ricerca</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-auto">
+    <h2 class="text-info m-3">Lista dei contratti</h2>
+    <div *ngFor="let contratto of contratti" class="card d-lg-inline-flex" style="width: 25rem">
+      <div class="card-body">
+        <h5 class="card-title">Contratto {{contratto.titoloContratto}}</h5>
+        <p class="card-text"> {{contratto.descrizioneContratto}}</p>
+        <p class="card-text">costo: {{contratto.costoMensile}}</p>
+        <p class="card-text">Durata minima: {{contratto.durataMin}}</p>
+        <p class="card-text">Durata massima: {{contratto.durataMax}}</p>
+        <p class="card-text text-black">I servizi disponibili :
+          <span *ngFor="let servizio of contratto.servizi; let last = last">{{servizio.nomeServizio}}{{last?'':',
+              '}}</span>
+        </p>
+        <a (click)="modificaContratto(contratto)" class="btn btn-primary"> modifica </a>
+        <a (click)="deleteContratto(contratto.id)" class="btn btn-danger"> elimina </a>
       </div>
     </div>
   </div>
@@ -23,7 +62,7 @@
 <div class="container-fluid text-center">
   <div class="row">
     <div class="col-12">
-      <h2 class="text-info" >Crea un nuovo contratto</h2>
+      <h2 class="text-info">Crea un nuovo contratto</h2>
       <button type="button" class="btn border border-dark  rounded-3 fs-5 py-3 text-info m-3 " (click)='switchForm()'>
         Crea contratto
       </button>
@@ -35,35 +74,36 @@
 <div *ngIf="update">
   <hr>
   <h3 class="text-info text-center">Modifica la formula di contratto</h3>
-<form [formGroup]="form" class="text-center">
-  <div class="form-group">
-    <label for="titoloContratto">Titolo contratto</label>
-    <input type="text" class="form-control m-auto w-auto" placeholder="Titolo Contratto"
-      formControlName="titoloContratto" />
-  </div>
-  <div class="form-group">
-    <label for="descrizioneContratto">Descrizione contratto</label>
-    <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="descrizioneContratto" />
-  </div>
-  <div class="form-group">
-    <label for="costoMensile">Costo contratto</label>
-    <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="costoMensile" />
-  </div>
-  <div class="form-group">
-    <label for="durataMax">Durata Massima</label>
-    <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="durataMax" />
-  </div>
-  <div class="form-group">
-    <label for="durataMin">Durata Minima</label>
-    <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="durataMin" />
-  </div>
-  <div class="form-group">
+  <form [formGroup]="form" class="text-center">
+    <div class="form-group">
+      <label for="titoloContratto">Titolo contratto</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Titolo Contratto"
+        formControlName="titoloContratto" />
+    </div>
+    <div class="form-group">
+      <label for="descrizioneContratto">Descrizione contratto</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione"
+        formControlName="descrizioneContratto" />
+    </div>
+    <div class="form-group">
+      <label for="costoMensile">Costo contratto</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="costoMensile" />
+    </div>
+    <div class="form-group">
+      <label for="durataMax">Durata Massima</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="durataMax" />
+    </div>
+    <div class="form-group">
+      <label for="durataMin">Durata Minima</label>
+      <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="durataMin" />
+    </div>
+    <div class="form-group">
       <label for="servizi">Aggiungi Servizi</label>
       <select class="form-select select select--multiple" id="servizi" formControlName="servizi" multiple>
-          <option *ngFor="let servizio of servizi" [ngValue]="servizio">{{servizio.nomeServizio}}</option>
-        </select>
-  </div>
-  <input type="submit" class="btn btn-success"  (click)="updateContratto()" value="Modifica"/>
-</form>
+        <option *ngFor="let servizio of servizi" [ngValue]="servizio">{{servizio.nomeServizio}}</option>
+      </select>
+    </div>
+    <input type="submit" class="btn btn-success" (click)="updateContratto()" value="Modifica" />
+  </form>
 </div>
 <app-form-contratto *ngIf="showForm"></app-form-contratto>

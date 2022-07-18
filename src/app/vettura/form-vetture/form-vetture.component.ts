@@ -7,6 +7,7 @@ import { VetturaService } from '../vettura.service';
   templateUrl: './form-vetture.component.html',
   styleUrls: ['./form-vetture.component.css']
 })
+
 export class FormVettureComponent implements OnInit {
 
   constructor(
@@ -25,7 +26,16 @@ export class FormVettureComponent implements OnInit {
     // img: [''],
   });
 
+  liste: any ={
+    alimentaziones: []
+  };
+
+  riepilogo: any = {
+    alimentazioni: null
+  };
+
   ngOnInit(): void {
+    this.liste.alimentaziones=Object.keys(Alimentazione)
   }
 
   addVettura() {
@@ -33,4 +43,23 @@ export class FormVettureComponent implements OnInit {
       alert('Vettura creata con successo')
     });
   }
+
+  loadFromLocalStorage(){
+    const alimentazione = localStorage.getItem('alimentazione')
+    if(alimentazione){
+      this.form.patchValue({vetturaId:parseInt(alimentazione,10)})
+    }
+  }
+
+  onSwitch(field: string){
+    this.riepilogo[field] = this.liste[field.slice(0,-2)+'s'].filter((x:any)=> x.id === this.form.controls[field].value)[0];
+  }
+}
+
+export enum Alimentazione {
+  DISEL = "DISEL",
+  BENZINA = "BENZINA",
+  ELETTRICA = "ELETTRICA",
+  GPL = "GPL",
+  HYBRID = "HYBRID"
 }

@@ -3,22 +3,27 @@
       <label for="titoloContratto">Titolo contratto</label>
       <input type="text" class="form-control m-auto w-auto" placeholder="Titolo Contratto"
         formControlName="titoloContratto" />
+        <app-validazione [control]="form['controls']['titoloContratto']"></app-validazione>
     </div>
     <div class="form-group">
       <label for="descrizioneContratto">Descrizione contratto</label>
       <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="descrizioneContratto" />
+      <app-validazione [control]="form['controls']['descrizioneContratto']"></app-validazione>
     </div>
     <div class="form-group">
       <label for="costoMensile">Costo contratto</label>
       <input type="text" class="form-control m-auto w-auto" placeholder="Descrizione" formControlName="costoMensile" />
+      <app-validazione [control]="form['controls']['costoMensile']"></app-validazione>
     </div>
     <div class="form-group">
       <label for="durataMax">Durata Massima</label>
-      <input type="text" class="form-control m-auto w-auto" placeholder="Durata Massima" formControlName="durataMax" />
+      <input type="number" class="form-control m-auto w-auto" placeholder="Durata Massima" formControlName="durataMax" />
+      <app-validazione [control]="form['controls']['durataMax']"></app-validazione>
     </div>
     <div class="form-group">
       <label for="durataMin">Durata Minima</label>
-      <input type="text" class="form-control m-auto w-auto" placeholder="Durata minima" formControlName="durataMin" />
+      <input type="number" class="form-control m-auto w-auto" placeholder="Durata minima" formControlName="durataMin" />
+      <app-validazione [control]="form['controls']['durataMin']"></app-validazione>
     </div>
     <div class="form-group">
         <label for="servizi">Aggiungi Servizi</label>

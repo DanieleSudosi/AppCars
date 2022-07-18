@@ -15,6 +15,10 @@ export class ContrattoService {
     return this.http.get(this.url);
   }
 
+  postContratti(c: Contratto){
+    return this.http.post(this.url + "/filter", c);
+  }
+
   getContratto(id: Number){
     return this.http.get(this.url + "/" + id);
   }
