@@ -31,6 +31,7 @@ export class RichiestaNoleggiComponent implements OnInit {
   public modificaStatoQuantita(n: Noleggio, stato:string){
     this.service.queryParam(n,stato).subscribe(()=>{
       this.getNoleggiInAttesa();
+      
       alert(`noleggio ${stato==='APPROVATO'?"approvato": "respinto" } con successo`)
     })
   }

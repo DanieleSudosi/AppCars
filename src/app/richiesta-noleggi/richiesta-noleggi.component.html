@@ -7,9 +7,10 @@
             <h5 class="card-title">
              Contratto scelto: {{ noleggio.contratto?.titoloContratto }} 
             </h5>
-            <p class="card-text"> numero della carta : {{ noleggio.cliente?.carta }} </p>
-            <p class="card-text"> data inizio noleggio: {{ noleggio.dataInizio }}</p>
-            <p class="card-text"> data reso: {{ noleggio.dataReso }}</p>
+            <p class="card-text"><strong>numero della carta : </strong> {{ noleggio.cliente?.carta }} </p>
+            <p class="card-text"> <strong> vettura:</strong> {{ noleggio.vettura?.marca }} - {{ noleggio.vettura?.modello }} // disponibilità: {{ noleggio.vettura?.quantita }}</p>
+            <p class="card-text"> <strong>data inizio noleggio:</strong> {{ noleggio.dataInizio }}</p>
+            <p class="card-text"><strong> data reso: </strong>{{ noleggio.dataReso }}</p>
             <a class="btn btn-primary" (click)="modificaStatoQuantita(noleggio,'APPROVATO')">Approva</a>
             <a class="btn btn-danger" (click)="modificaStatoQuantita(noleggio,'RESPINTO')">Respingi</a>
           </div>
