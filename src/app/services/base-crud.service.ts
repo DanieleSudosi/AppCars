@@ -15,12 +15,21 @@ export class BaseCrudService {
     return this.http.post(this.url, objToInsert);
   }
 
-  //se esiste lo metto se no metto l'oggetto vuoto
-  // public query(objCriteria?: any) {
-  //   return this.http.get(this.url, {
-  //     params: new HttpParams().set(objCriteria objCriteria? objCriteria: {}),
-  //   });
-  // }
+  public get(objCriteria?: any) {
+    let criteria = '';
+    const keys = Object.keys(objCriteria);
+    for (let i = 0; i < keys.length; i++) {
+      if(i=0){
+        criteria = '?';
+      }else{
+        criteria = `${criteria}&`}
+        const key = keys[i];
+        criteria = `${criteria}${key}${objCriteria[key]}`
+      }
+    // return this.http.get(this.url, {
+    //   params: new HttpParams().set(objCriteria objCriteria? objCriteria: {}),
+    // });
+  }
 
 // QUERY CON POST
   public query(objCriteria?:any){
